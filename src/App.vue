@@ -22,7 +22,7 @@ export default {
 	@import url('./styles/common.scss');
 	@import url('./styles/variables.scss');
 
-	.auth-wrap {
+	.auth-layout {
 		height: calc(100vh - 90px);
 		display: flex;
 		justify-content: center;
