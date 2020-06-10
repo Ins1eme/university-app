@@ -1,0 +1,14 @@
+.group-editor {
+    padding: 20px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: flex-end;
+
+    .v-btn {
+        &:first-child {
+            margin-right: 20px;
+        }
+    }
+}

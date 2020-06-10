@@ -1,0 +1,19 @@
+@import '../../../styles/variables.scss';
+
+.logo {
+    margin-right: 20px;
+}
+
+.logo-img {
+    max-width: 82px;
+    width: 100%;
+}
+
+.header-title {
+    color: $lightDarkColor;
+}
+
+.logo-wrap {
+    width: fit-content!important;
+    height: fit-content!important;
+}

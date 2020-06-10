@@ -1,0 +1,117 @@
+<v-dialog v-model="editorDialog" max-width="1200px">
+    <v-card class="group-editor">
+        <ValidationObserver ref="observer" v-slot="{ validate, reset }">
+            <div class="row">
+                <div class="col" col="4">
+                    <VTextFieldWithValidation 
+                        color="primary"
+                        rules="required"
+                        v-model="account.firstName"
+                        label="Ім'я"
+                    ></VTextFieldWithValidation>
+                </div>
+                <div class="col" col="4">
+                    <VTextFieldWithValidation 
+                        color="primary"
+                        v-model="account.lastName"
+                        rules="required"
+                        label="Прізвище"
+                    ></VTextFieldWithValidation>
+                </div>
+                <div class="col" col="4">
+                    <VTextFieldWithValidation 
+                        color="primary"
+                        v-model="account.middleName"
+                        rules="required"
+                        label="По батькові"
+                    ></VTextFieldWithValidation>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" col="4">
+                    <VTextFieldWithValidation 
+                        color="primary"
+                        v-model="account.loginName"
+                        rules="required"
+                        label="Логін"
+                    ></VTextFieldWithValidation>
+                </div>
+                <div class="col" col="4">
+                    <VTextFieldWithValidation 
+                        color="primary"
+                        rules="required|email"
+                        label="E-mail"
+                        v-model="account.email"
+                    ></VTextFieldWithValidation>
+                </div>
+                <div class="col" col="4">
+                    <VDatePickerWithValidation
+                        label="Дата народження"
+                        v-model="account.birthday"
+                        rules="required"
+                    ></VDatePickerWithValidation>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" col="12" v-if="!account.id">
+                    <VSelectWithValidation
+                        :items="roles"
+                        item-text="text"
+                        v-model="account.roleName"
+                        item-value="value"
+                        rules="required"
+                        label="Роль"
+                    ></VSelectWithValidation>
+                </div>
+                <div class="col" col="12" v-if="!account.id">
+                    <VTextFieldWithValidation 
+                        color="primary"
+                        type="password"
+                        v-model="account.password"
+                        rules="required"
+                        label="Пароль"
+                    ></VTextFieldWithValidation>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" col="12" v-if="isStudent">
+                    <VAutocompleteWithValidation
+                        color="primary"
+                        :items="learnFormsList"
+                        item-value="id"
+                        v-model="account.learnFormId"
+                        item-text="name"
+                        rules="required"
+                        label="Форма навчання"
+                    ></VAutocompleteWithValidation>
+                </div>
+                <div class="col" col="12" v-if="isStudent">
+                    <VAutocompleteWithValidation
+                        color="primary"
+                        :items="groupsList"
+                        v-model="account.groupId"
+                        item-value="id"
+                        item-text="name"
+                        rules="required"
+                        label="Група"
+                    ></VAutocompleteWithValidation>
+                </div>
+                <div class="col" col="12"  v-if="isTeacher">
+                    <VAutocompleteWithValidation
+                        color="primary"
+                        rules="required"
+                        :items="cathedrasList"
+                        item-value="id"
+                        item-text="name"
+                        v-model="account.cathedraId"
+                        label="Кафедра"
+                    ></VAutocompleteWithValidation>
+                </div>
+            </div>
+            <div class="buttons">
+                <v-btn @click="closeDialog()" dark>Відмінити</v-btn>
+                <v-btn @click="save()" color="primary">{{ buttonText }}</v-btn>
+            </div>
+        </ValidationObserver>
+    </v-card>
+</v-dialog>

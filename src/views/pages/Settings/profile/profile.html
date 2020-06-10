@@ -1,0 +1,44 @@
+<v-card class="profile">
+    <label for="photo">
+        <div class="user-image" to='/settings'>
+            <img :src="userImage" alt="logo">
+            <div class="logo-hvrbox">
+                <v-icon class="add-icon" size="36" color="white">mdi-plus</v-icon>
+            </div>
+        </div>
+    </label>
+    <input type="file" id="photo" accept="image/png, image/jpeg" @change="onFileSelect($event)">
+    <ValidationObserver ref="observer" v-slot="{ validate, reset }">
+        <VTextFieldWithValidation 
+            color="primary"
+            v-model="user.firstName"
+            disabled
+            label="Ім'я"
+        ></VTextFieldWithValidation>
+        <VTextFieldWithValidation 
+            color="primary"
+            v-model="user.lastName"
+            disabled
+            label="Прізвище"
+        ></VTextFieldWithValidation>
+        <VTextFieldWithValidation 
+            color="primary"
+            v-model="user.middleName"
+            disabled
+            label="По батькові"
+        ></VTextFieldWithValidation>
+        <VTextFieldWithValidation 
+            color="primary"
+            v-model="user.loginName"
+            disabled
+            label="Логін"
+        ></VTextFieldWithValidation>
+        <VTextFieldWithValidation 
+            color="primary"
+            v-model="user.email"
+            disabled
+            label="E-mail"
+        ></VTextFieldWithValidation>
+        <v-btn color="primary" @click="updateProfile()">Змінити</v-btn>
+    </ValidationObserver>
+</v-card>

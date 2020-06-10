@@ -1,0 +1,46 @@
+.faculties {
+    padding: 20px;
+}
+
+.filters {
+    padding: 20px;
+    margin-bottom: 20px;
+    
+    .title {
+        display: block;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+}
+
+.v-data-table {
+    margin-bottom: 20px;
+}
+
+.v-data-table ::v-deep th, .v-data-table ::v-deep td {
+    text-align: center!important;
+    vertical-align: middle!important;
+}
+
+.remove-icon {
+    color: red;
+}
+
+.v-icon {
+    cursor: pointer;
+}
+
+.add-icon {
+    right: 20px;
+    bottom: 20px;
+}
+
+.link {
+    cursor: pointer;
+    animation: .2s ease-in-out;
+
+    &:hover {
+        color: #000;
+        text-decoration: underline;
+    }
+}

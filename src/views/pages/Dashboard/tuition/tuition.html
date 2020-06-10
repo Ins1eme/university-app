@@ -1,0 +1,20 @@
+<v-card class="tuition" v-if="isShowTuition">
+    <span class="title">Оплата навчання</span>
+    <span>До сплати: {{user.student && user.student.needPaySum}} ₴</span>
+    <ValidationObserver ref="observer" v-slot="{ validate, reset }">
+        <div class="row">
+            <div class="col" col="12">
+                <VTextFieldWithValidation 
+                    :rules="`required|integer|min_value:10|max_value:${user.student.balance}`"
+                    v-model="amount"
+                    color="primary"
+                    vid="amount"
+                    label="Сума"
+                ></VTextFieldWithValidation>
+            </div>
+        </div>
+        <div class="buttons">
+            <v-btn color="primary" @click="tuition()">Оплатити</v-btn>
+        </div>
+    </ValidationObserver>
+</v-card>

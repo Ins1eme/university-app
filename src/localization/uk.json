@@ -1,0 +1,43 @@
+{
+    "routes": {
+        "dashboard": "Головна",
+        "settings": "Налаштування",
+        "faculties": "Факультети",
+        "cathedras": "Кафедри",
+        "groups": "Групи",
+        "learn-forms": "Форми навчання",
+        "payments": "Платежі",
+        "balance-histories": "Історія балансу",
+        "lessons": "Уроки",
+        "lesson-materials": "Навчальні матеріали",
+        "tasks": "Завдання",
+        "lesson-groups": "Групи уроку",
+        "evaluations": "Журнал"
+    },
+    "roles": {
+        "admin": "Адміністратор",
+        "student": "Студент",
+        "teacher": "Викладач"
+    },
+    "notifications": {
+        "invalidPassword": "Неправильний пароль",
+        "userNotFound": "Користувача не знайдено",
+        "hasActiveStudents": "Неможливо видалити з активними студентами",
+        "hasActiveCathedras": "Неможливо видалити з активними кафедрами",
+        "hasActiveGroups": "Неможливо видалити з активними групами",
+        "lessonAlreayUsed": "Неможливо видалити активний урок",
+        "moreThanMaximum": "Неможливо поставити оцінку вище максимальної"
+    },
+    "statuses": {
+        "new": "Новий",
+        "success": "Успішно",
+        "error": "Помилка",
+        "sandbox": "Sandbox"
+    },
+    "paymentTypes": {
+        "rechargeBalance": "Поповнення балансу",
+        "tuitionFee": "Оплата за навчання"
+    },
+    "true": "Так",
+    "false": "Ні"
+}

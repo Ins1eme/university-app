@@ -1,0 +1,45 @@
+<v-dialog v-model="editorDialog" max-width="900px">
+    <v-card class="faculty-editor">
+        <ValidationObserver ref="observer" v-slot="{ validate, reset }">
+            <div class="row">
+                <div class="col" col="6">
+                    <VTextFieldWithValidation 
+                        color="primary"
+                        v-model="task.name"
+                        rules="required"
+                        label="Назва завдання"
+                    ></VTextFieldWithValidation>
+                </div>
+                <div class="col" col="6">
+                    <VTextFieldWithValidation 
+                        color="primary"
+                        v-model="task.description"
+                        label="Опис"
+                    ></VTextFieldWithValidation>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" col="6">
+                    <VTextFieldWithValidation 
+                        color="primary"
+                        v-model.number="task.max"
+                        rules="required"
+                        label="Максимальна оцінка"
+                    ></VTextFieldWithValidation>
+                </div>
+                <div class="col" col="6">
+                    <VTextFieldWithValidation 
+                        color="primary"
+                        rules="required"
+                        v-model.number="task.order"
+                        label="Порядок"
+                    ></VTextFieldWithValidation>
+                </div>
+            </div>
+        </ValidationObserver>
+        <div class="buttons">
+            <v-btn @click="closeDialog()" dark>Відмінити</v-btn>
+            <v-btn @click="save()" color="primary">{{buttonText}}</v-btn>
+        </div>
+    </v-card>
+</v-dialog>

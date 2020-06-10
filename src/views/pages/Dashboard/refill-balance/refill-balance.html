@@ -1,0 +1,19 @@
+<v-card class="refill-balance" v-if="isAllowed(['student'])">
+    <span class="title">Поповнення балансу</span>
+    <span>Поточний баланс: {{user.student.balance}} ₴</span>
+    <ValidationObserver ref="observer" v-slot="{ validate, reset }">
+        <div class="row">
+            <div class="col" col="12">
+                <VTextFieldWithValidation 
+                    rules="required|integer"
+                    v-model="amount"
+                    color="primary"
+                    label="Сума"
+                ></VTextFieldWithValidation>
+            </div>
+        </div>
+        <div class="buttons">
+            <v-btn color="primary" @click="refillBalance()">Поповнити</v-btn>
+        </div>
+    </ValidationObserver>
+</v-card>

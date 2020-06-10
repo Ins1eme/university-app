@@ -1,0 +1,54 @@
+<v-dialog v-model="editorDialog" max-width="900px" content-class="cathedra-editor">
+    <v-card class="cathedra-editor">
+        <ValidationObserver ref="observer" v-slot="{ validate, reset }">
+            <div class="row">
+                <div class="col" col="6">
+                    <VTextFieldWithValidation 
+                        color="primary"
+                        v-model="cathedra.name"
+                        rules="required"
+                        label="Назва факультету"
+                    ></VTextFieldWithValidation>
+                </div>
+                <div class="col" col="6">
+                    <VDatePickerWithValidation
+                        label="Дата заснування"
+                        v-model="cathedra.foundedDate"
+                    ></VDatePickerWithValidation>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" col="6">
+                    <VTextFieldWithValidation 
+                        color="primary"
+                        v-model="cathedra.siteUrl"
+                        label="Сайт"
+                    ></VTextFieldWithValidation>
+                </div>
+                <div class="col" col="6">
+                    <VTextFieldWithValidation 
+                        color="primary"
+                        v-model="cathedra.additionalInfo"
+                        label="Додаткова інформація"
+                    ></VTextFieldWithValidation>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" col="12">
+                    <VSelectWithValidation
+                        :items="facultiesList"
+                        item-text="name"
+                        item-value="id"
+                        rules="required"
+                        v-model="cathedra.facultyId"
+                        label="Факультет"
+                    ></VSelectWithValidation>
+                </div>
+            </div>
+        </ValidationObserver>
+        <div class="buttons">
+            <v-btn @click="closeDialog()" dark>Відмінити</v-btn>
+            <v-btn @click="save()" color="primary">{{buttonText}}</v-btn>
+        </div>
+    </v-card>
+</v-dialog>

@@ -1,0 +1,47 @@
+<div class="faculties">
+    <v-card class="filters" v-if="isAllowed(['admin'])">
+        <span class="title">Фільтри</span>
+        <div class="row">
+            <div class="col" col="12">
+                <v-autocomplete
+                    label="Студент"
+                    :items="studentsList"
+                    :item-text="studentData"
+                    item-value="id"
+                    @change="getBalanceHistories()"
+                    cache-items
+                    v-model="filters.studentId"
+                    :search-input.sync="query"
+                    hide-no-data
+                ></v-autocomplete>
+            </div>
+        </div>
+    </v-card>
+    <v-data-table
+        :headers="headers"
+        :items="balanceHistories"
+        hide-default-footer
+        :items-per-page="20"
+        disable-sort
+        no-data-text="Немає даних"
+        class="elevation-4"
+    >
+        <template v-slot:item.updatedAt="{ item }">
+            {{ item.updatedAt | date }}
+        </template>
+        <template v-slot:item.createdAt="{ item }">
+            {{ item.createdAt | date }}
+        </template>
+        <template v-slot:item.actions="{ item }">
+            <v-btn icon :to="'/payments/' + item.id">
+                <v-icon>mdi-arrow-right-bold</v-icon>
+            </v-btn>
+        </template>
+    </v-data-table>
+    <v-pagination
+        v-model="pagination.page"
+        v-if="pagination.totalPages > 1"
+        :length="pagination.totalPages"
+        @input="getPayments($event)"
+    ></v-pagination>
+</div>

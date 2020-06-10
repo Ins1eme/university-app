@@ -1,0 +1,32 @@
+<div class="student-grade">
+    <v-data-table
+        :headers="headers"
+        :items="studentGrade"
+        hide-default-footer
+        :items-per-page="20"
+        disable-sort
+        no-data-text="Немає даних"
+        class="elevation-4"
+    >
+        <template v-slot:item.cathedras="{ item }">
+            {{ item.cathedras || 0 }}
+        </template>
+        <template v-slot:item.foundedDate="{ item }">
+            {{ item.foundedDate | date }}
+        </template>
+        <template v-slot:item.updatedAt="{ item }">
+            {{ item.updatedAt | date }}
+        </template>
+        <template v-slot:item.createdAt="{ item }">
+            {{ item.createdAt | date }}
+        </template>
+    </v-data-table>
+    <v-btn
+        fixed
+        fab
+        color="primary"
+        class="add-icon"
+    >
+        <v-icon>mdi-plus</v-icon>
+    </v-btn>
+</div>

@@ -1,0 +1,36 @@
+<v-dialog v-model="editorDialog" max-width="900px">
+    <v-card class="learn-form-editor">
+        <ValidationObserver ref="observer" v-slot="{ validate, reset }">
+            <div class="row">
+                <div class="col" col="6">
+                    <VTextFieldWithValidation 
+                        color="primary"
+                        v-model="learnForm.name"
+                        rules="required"
+                        label="Назва форми навчання"
+                    ></VTextFieldWithValidation>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" col="6">
+                    <VTextFieldWithValidation 
+                        color="primary"
+                        v-model="learnForm.price"
+                        rules="required"
+                        label="Ціна"
+                    ></VTextFieldWithValidation>
+                </div>
+                <div class="col center" col="6">
+                    <v-switch
+                        v-model="learnForm.needPay"
+                        label="Оплата"
+                    ></v-switch>
+                </div>
+            </div>
+        </ValidationObserver>
+        <div class="buttons">
+            <v-btn @click="closeDialog()" dark>Відмінити</v-btn>
+            <v-btn @click="save()" color="primary">{{buttonText}}</v-btn>
+        </div>
+    </v-card>
+</v-dialog>

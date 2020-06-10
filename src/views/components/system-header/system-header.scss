@@ -1,0 +1,56 @@
+.header {
+    position: relative;
+    height: 64px;
+    padding: 0 20px;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.header-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.user-email {
+    font-size: 20px;
+    margin-right: 20px;
+}
+
+.icons {
+    display: flex;
+    margin-right: 80px;
+}
+
+.bell, .email {
+    position: relative;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.count {
+    position: absolute;
+    top: -9px;
+    right: -9px;
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 10px;
+    font-weight: 700;
+    color: white;
+}
+
+.bell-count {
+    background: #5bc0de;
+}
+
+.email-count {
+    background: #d9534f;;
+}
+

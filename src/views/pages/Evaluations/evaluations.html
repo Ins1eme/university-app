@@ -1,0 +1,37 @@
+<div class="evaluations">
+    <v-data-table
+        v-if="isShowJournal"
+        :items="evaluations"
+        :headers="assessments"
+        hide-default-footer
+        disable-sort
+        :items-per-page="20"
+        no-data-text="Немає даних"
+        class="elevation-4"
+    >
+        <template v-slot:header.text="{ item }">
+            {{item.id}}
+        </template>
+        <template v-slot:body>
+            <tr v-for="(item, index) in evaluations">
+                <td>{{item.firstName}} {{item.lastName}} {{item.middleName}}</td>
+                <td v-for="(evaluationId) in Object.keys(item.assessment)">
+                    <v-edit-dialog
+                        ref="editDialog"
+                        lazy
+                        :return-value.sync="item.assessment[evaluationId]"
+                        @save="onSave(evaluationId, item.studentId, item.assessment[evaluationId])"
+                    > {{item.assessment[evaluationId]}}
+                        <template v-slot:input>
+                            <span class="edit-text"> Натисніть "Enter", щоб зберегти </span>
+                            <v-text-field
+                                v-model="item.assessment[evaluationId]"
+                            >
+                            </v-text-field>
+                        </template>
+                    </v-edit-dialog>
+                </td>
+            </tr>
+        </template>
+    </v-data-table>
+</div>

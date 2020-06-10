@@ -1,0 +1,38 @@
+.evaluations {
+    padding: 20px;
+}
+
+.v-data-table {
+    margin-bottom: 20px;
+}
+
+.v-data-table ::v-deep th, .v-data-table ::v-deep td {
+    text-align: center!important;
+    vertical-align: middle!important;
+}
+
+.v-icon {
+    cursor: pointer;
+}
+
+.edit-text {
+    display: block;
+    padding-top: 10px;
+    text-align: center;
+    margin: auto;
+}
+
+.add-icon {
+    right: 20px;
+    bottom: 20px;
+}
+
+.link {
+    cursor: pointer;
+    animation: .2s ease-in-out;
+
+    &:hover {
+        color: #000;
+        text-decoration: underline;
+    }
+}

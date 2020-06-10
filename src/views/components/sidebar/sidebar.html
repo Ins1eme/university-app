@@ -1,0 +1,28 @@
+<div class="sidebar">
+    <v-card>
+        <div class="univ">
+            <img src="@/assets/images/vntu-logo.png" alt="logo" class="logo">
+        </div>
+        <div class="user">
+            <router-link to="/settings">
+                <div class="user-image" to='/settings' link>
+                    <img :src="userImage" alt="logo">
+                    <div class="logo-hvrbox">
+                        <v-icon class="add-icon" size="36" color="white">mdi-plus</v-icon>
+                    </div>
+                </div>
+            </router-link>
+            <span class="user-name">{{ user.firstName }} {{user.lastName}}</span>
+            <span class="user-role">{{ locale.roles[user.roleName] }}</span>
+        </div>
+
+        <v-list>
+            <v-list-item v-for="(link, index) in routes" :key="index" link :to="link.url" v-if="isAllowed(link)">
+                <v-list-item-icon>
+                    <v-icon> {{ link.icon }} </v-icon>
+                </v-list-item-icon>
+                <v-list-item-title class="link-title"> {{link.title}}</v-list-item-title>
+            </v-list-item>
+        </v-list>
+    </v-card>
+</div>

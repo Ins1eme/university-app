@@ -1,0 +1,38 @@
+<div class="login">
+    <div class="container">
+        <span class="login-title">Вхід до ВНТУ</span>
+        <ValidationObserver ref="observer" v-slot="{ validate, reset }">
+            <v-card class="login-card">
+                <VTextFieldWithValidation
+                    label="Логін"
+                    v-model="auth.loginName"
+                    :disabled="!!auth.email"
+                    color="primary"
+                >
+                </VTextFieldWithValidation> 
+                <VTextFieldWithValidation 
+                    label="E-mail"
+                    v-model="auth.email"
+                    rules="email"
+                    :disabled="!!auth.loginName"
+                    color="primary"
+                ></VTextFieldWithValidation>
+                <VTextFieldWithValidation
+                    label="Пароль"
+                    type="password"
+                    rules="required"
+                    color="primary"
+                    v-model="auth.password"
+                ></VTextFieldWithValidation>
+                <div class="buttons">
+                    <v-btn
+                        width="100%"
+                        color="primary"
+                        @click="submit()"
+                    > Вхід
+                    </v-btn>
+                </div>
+            </v-card>
+        </ValidationObserver>
+    </div>
+</div>

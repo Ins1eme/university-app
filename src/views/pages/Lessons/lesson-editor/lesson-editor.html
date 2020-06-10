@@ -1,0 +1,55 @@
+<v-dialog v-model="editorDialog" max-width="900px">
+    <v-card class="group-editor">
+        <ValidationObserver ref="observer" v-slot="{ validate, reset }">
+            <div class="row">
+                <div class="col" col="6">
+                    <VTextFieldWithValidation 
+                        color="primary"
+                        v-model="lesson.name"
+                        rules="required"
+                        label="Назва уроку"
+                    ></VTextFieldWithValidation>
+                </div>
+                <div class="col" col="6">
+                    <VTextFieldWithValidation 
+                        color="primary"
+                        v-model.number="lesson.semester"
+                        rules="required"
+                        label="Семестр"
+                    ></VTextFieldWithValidation>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" col="6">
+                    <VAutocompleteWithValidation
+                        label="Викладач"
+                        :items="teachersList"
+                        :item-text="teacherData"
+                        item-value="id"
+                        rules="required"
+                        cache-items
+                        v-model="lesson.teacherId"
+                        :search-input.sync="query"
+                        hide-no-data
+                    ></VAutocompleteWithValidation>
+                </div>
+                <div class="col" col="6">
+                    <VAutocompleteWithValidation
+                        label="Групи"
+                        :items="groupsList"
+                        item-text="name"
+                        item-value="id"
+                        multiple
+                        rules="required"
+                        v-model="lesson.groupsIds"
+                        hide-no-data
+                    ></VAutocompleteWithValidation>
+                </div>
+            </div>
+        </ValidationObserver>
+        <div class="buttons">
+            <v-btn @click="closeDialog()" dark>Відмінити</v-btn>
+            <v-btn @click="save()" color="primary">{{buttonText}}</v-btn>
+        </div>
+    </v-card>
+</v-dialog>

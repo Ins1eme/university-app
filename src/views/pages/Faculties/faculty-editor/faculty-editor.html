@@ -1,0 +1,42 @@
+<v-dialog v-model="editorDialog" max-width="900px">
+    <v-card class="faculty-editor">
+        <ValidationObserver ref="observer" v-slot="{ validate, reset }">
+            <div class="row">
+                <div class="col" col="6">
+                    <VTextFieldWithValidation 
+                        color="primary"
+                        v-model="faculty.name"
+                        rules="required"
+                        label="Назва факультету"
+                    ></VTextFieldWithValidation>
+                </div>
+                <div class="col" col="6">
+                    <VDatePickerWithValidation
+                        label="Дата заснування"
+                        v-model="faculty.foundedDate"
+                    ></VDatePickerWithValidation>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" col="6">
+                    <VTextFieldWithValidation 
+                        color="primary"
+                        v-model="faculty.siteUrl"
+                        label="Сайт"
+                    ></VTextFieldWithValidation>
+                </div>
+                <div class="col" col="6">
+                    <VTextFieldWithValidation 
+                        color="primary"
+                        v-model="faculty.additionalInfo"
+                        label="Додаткова інформація"
+                    ></VTextFieldWithValidation>
+                </div>
+            </div>
+        </ValidationObserver>
+        <div class="buttons">
+            <v-btn @click="closeDialog()" dark>Відмінити</v-btn>
+            <v-btn @click="save()" color="primary">{{buttonText}}</v-btn>
+        </div>
+    </v-card>
+</v-dialog>

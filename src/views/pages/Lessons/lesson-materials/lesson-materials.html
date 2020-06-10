@@ -1,0 +1,59 @@
+<div class="lesson-materials">
+    <span class="title">Завантажені навчальні матеріали</span>
+    <div class="uploaded-files" v-if="lessonMaterials.length">
+        <v-card>
+            <div class="uploaded-file" v-for="(file, index) in lessonMaterials" :key="index">
+                <div class="left">
+                    <v-icon color="primary">mdi-file-document</v-icon>
+                    <a :href="getFileLink(file.file.path)" target="_blank" class="link">
+                        <span>{{file.file.originalname}}</span>
+                    </a>
+                </div>
+                <div class="right" v-if="isAllowed(['teacher'])">
+                    <v-icon icon color="red" @click="removeUploadedFile(file)">mdi-close</v-icon>
+                </div>
+            </div>
+        </v-card>
+    </div>
+    <div class="no-files" v-else>
+        <span class='no-files-title'>Для даного урока немає навчальних матеріалів</span>
+    </div>
+    <div class="uploads" v-if="isAllowed(['teacher'])">
+        <label 
+            for="upload" 
+            :class="{'isActive': isHightlited}" 
+            ref="upload"
+            @drop="onDropFiles($event)" 
+            @dragover="hightlight()" 
+            @dragleave="unhighlight()"
+            class="upload-area"
+        >
+            <div>
+                <v-icon color=primary class="icon-doc">mdi-cloud-upload</v-icon>
+                <span class="upload-descr">Завантажте навчальні матеріали (максимальний розмір файлу 3мб )</span>
+            </div>
+        </label>
+        <input type="file" id="upload" multiple @change="selectFiles($event)">
+    </div>
+    <v-card class="file" v-if="files.length" v-for="(file, index) in files" :key="index">
+        <div class="left">
+            <v-icon color="primary">mdi-file-document</v-icon>
+            <span>{{file.name}}</span>
+        </div>
+        <div class="right">
+            <v-icon icon color="red" @click="removeFile(index)">mdi-close</v-icon>
+        </div>
+    </v-card>
+    <div class="buttons">
+        <v-btn v-if="files.length" color="primary" class="add" @click="addMaterials()">Додати</v-btn>
+    </div>
+    <v-btn
+        fixed
+        fab
+        color="primary"
+        class="back-icon"
+        to="/lessons"
+    >
+        <v-icon>mdi-arrow-left-bold</v-icon>
+    </v-btn>
+</div>

@@ -1,0 +1,31 @@
+<div class="faculties">
+    <v-data-table
+        :headers="headers"
+        :items="paymentLogs"
+        hide-default-footer
+        :items-per-page="20"
+        disable-sort
+        no-data-text="Немає даних"
+        class="elevation-4"
+    >
+        <template v-slot:item.response="{ item }">
+            {{ JSON.stringify(item.response) | maxLength('60') }}
+        </template>
+        <template v-slot:item.updatedAt="{ item }">
+            {{ item.updatedAt | date }}
+        </template>
+        <template v-slot:item.createdAt="{ item }">
+            {{ item.createdAt | date }}
+        </template>
+    </v-data-table>
+    <v-btn
+        fixed
+        fab
+        to="/payments"
+        color="primary"
+        class="add-icon"
+        @click="openEditor()"
+    >
+        <v-icon>mdi-arrow-left-bold</v-icon>
+    </v-btn>
+</div>

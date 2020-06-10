@@ -1,0 +1,25 @@
+<div class="header">
+    <div class="header-title">
+        <span class="title">{{routeName}}</span>
+    </div>
+    <div class="header-right">
+        <div class="icons">
+            <div class="bell">
+                <v-icon class="icon-bell">
+                    mdi-bell
+                </v-icon>
+                <span class="bell-count count">0</span>
+            </div>
+            <div class="email">
+                <v-icon class="icon-email">
+                    mdi-email
+                </v-icon>
+                <span class="email-count count">0</span>
+            </div>
+        </div>
+        <span class="user-email">{{ user.email }}</span>
+        <v-btn icon>
+            <v-icon @click="logout()" color="red">mdi-logout-variant</v-icon>
+        </v-btn>
+    </div>
+</div>
