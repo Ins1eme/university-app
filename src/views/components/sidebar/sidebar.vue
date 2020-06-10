@@ -13,7 +13,7 @@ export default {
 			title: 'Головна',
 			icon: 'mdi-buffer',
 			url: '/dashboard',
-			permissions: ['admin', 'teacher', 'student']
+			permissions: ['student']
 		}, { 
 			title: 'Користувачі', 
 			icon: 'mdi-account',

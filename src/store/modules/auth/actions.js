@@ -3,6 +3,12 @@ import cookies from 'js-cookie';
 import router from '@/router';
 import locale from '@/localization/uk.json';
 
+const pages = {
+    admin: '/accounts',
+    teacher: '/lessons',
+    student: '/dashboard'
+};
+
 export default {
     login: async({ commit }, data) => {
         await request({ method: 'post', url: 'user/session', data})
@@ -10,7 +16,8 @@ export default {
                 if (res && res.data) {
                     commit('SET_USER', res.data.user);
                     cookies.set('token', res.data.token);
-                    router.push('/dashboard');
+
+                    router.push(pages[res.data.user.roleName]);
                 }
             }).catch(error => {
                 commit('SET_NOTIFICATION', {
