@@ -12,7 +12,6 @@ export default {
     data: () => ({
         dialog: false,
         lessonId: null,
-        lessons: [{id: 2, name: 'Урок 2'}],
         headers: [{
             text: '#',
             value: 'id'
